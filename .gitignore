@@ -66,3 +66,6 @@ bin/
 include/
 pip-selfcheck.json
 
+#Pytest
+share/
+
