@@ -37,11 +37,12 @@ def handle_user_input(user_input):
 
 
 def thank_you():
-    """Add donation for a donor  print thank you email."""
+    """Add donation for a donor and print thank you email."""
     donor = get_donor()
-    donation = get_donation()
-    add_donation(donor, donation, DONORS)
-    display_email(donor, donation)
+    if donor != 'q':
+        donation = get_donation()
+        add_donation(donor, donation, DONORS)
+        display_email(donor, donation)
     handle_user_input(get_user_input())
 
 
@@ -59,11 +60,13 @@ def add_donation(donor, donation_amount, donor_dict):
 
 def get_donor():
     """Return list of donations for given donor."""
-    print("\nType 'list' for the donor list or enter donor name.")
+    print("\nType 'list' for the donor list, press 'Q' to return to menu, "
+          "otherwise enter donor name.")
     user_input = input('> ').lower()
     while user_input == 'list':
         display_list()
-        print("Type 'list' for the donor list or enter donor name.")
+        print("Type 'list' for the donor list, press 'Q' to reutrn to menu, "
+              "otherwise enter donor name.")
         user_input = input('> ').lower()
     return user_input
 
@@ -108,11 +111,13 @@ def sort_donor_list(donor_list):
 
 
 def create_report():
+    """Docstring."""
     print_report(sort_donor_list(DONORS), DONORS)
     handle_user_input(get_user_input())
 
 
 def print_report(sorted_list, donor_list):
+    """Docstring."""
     """Creates well formated report of donor activity."""
     print('{:20}|{:^15}|{:^15}|{:^15}'.format('Name', 'Total', '#', 'Average'))
     print('_' * 70)
