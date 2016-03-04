@@ -1,15 +1,20 @@
 """Mailroom Module."""
 
 import sys
-DONORS = {'Ben': [0, 0]}
+DONORS = {
+    'Ben': [0, 0],
+    'Daniel': [1, 2, 3],
+    'Batman': [100000],
+}
 
 
 def get_user_input():
     """Return user input."""
     valid = False
     while not valid:
-        print("\nWelcome to Mailroom Madness! Please choose from the following:\n"
-    " T - Send a (T)hank you\n R - Create a (R)eport\n Q - (Q)uit the program")
+        print("\nWelcome to Mailroom Madness! Please choose from the following"
+              ":\n T - Send a (T)hank you\n R - Create a (R)eport\n Q - (Q)uit"
+              " the program")
         user_input = input('> ').lower()
         valid = validate_user_input(user_input)
     return user_input
@@ -25,10 +30,8 @@ def handle_user_input(user_input):
     """Return user input."""
     if user_input == 't':
         thank_you()
-        valid = True
     elif user_input == 'r':
         create_report()
-        valid = True
     elif user_input == 'q':
         sys.exit()
 
@@ -75,10 +78,11 @@ def get_donation():
 def display_email(donor, donation_amount):
     """Print email with donor name and donation amount."""
     print("\nDear {},\n Thank you for your generous donation of ${}. "
-        "We here at the Seattle Toaster Enthusiasts Association "
-        "will use the money to fund our annual pilgrimage to "
-        "Stanley North Dakota, the toaster mecca of the midwest.\n"
-        "Thank you very much,\n Margie Plumwhistle, President S.T.E.A\n".format(donor, donation_amount))
+          "We here at the Seattle Toaster Enthusiasts Association "
+          "will use the money to fund our annual pilgrimage to "
+          "Stanley North Dakota, the toaster mecca of the midwest.\n"
+          "Thank you very much,\n Margie Plumwhistle, President S.T.E.A\n"
+          "".format(donor, donation_amount))
 
 
 def donation_totals(donor_list, donor):
@@ -113,12 +117,12 @@ def print_report(sorted_list, donor_list):
     print('_' * 70)
     for donor in sorted_list:
         print('{:20}|{:^15}|{:^15}|{:^15}'
-            ''.format(donor,
-                donation_totals(DONORS, donor),
-                donation_qty(DONORS, donor),
-                donation_avg(DONORS, donor)
-                ))
-
+              ''.format(
+                    donor,
+                    donation_totals(DONORS, donor),
+                    donation_qty(DONORS, donor),
+                    donation_avg(DONORS, donor)
+                    ))
 
 
 if __name__ == '__main__':
