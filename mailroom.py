@@ -56,11 +56,15 @@ def add_donation(donor, donation_amount, donor_dict):
 # TODO: Refactor this ugly ass code block
 def get_donor():
     """Return list of donations for given donor."""
-    print("\nType 'list' for the donor list or enter donor name.")
+    print("\nType 'list' for the donor list, enter donor name or type 'q' to quit.")
     user_input = input('> ').lower()
+    if user_input == 'q':
+        get_user_input()
     while user_input == 'list':
         display_list()
-        print("Type 'list' for the donor list or enter donor name.")
+        if user_input == 'q':
+            get_user_input()
+        print("\nType 'list' for the donor list, enter donor name or type 'q' to quit")
         user_input = input('> ').lower()
     return user_input
 
@@ -104,13 +108,15 @@ def sort_donor_list(donor_list):
 
 def create_report():
     print_report(sort_donor_list(DONORS), DONORS)
+    handle_user_input(get_user_input())
 
 
 def print_report(sorted_list, donor_list):
     """Creates well formated report of donor activity."""
-    print('Name\t\t|\tTotal\t|\t#\t|\tAverage\n' + ('_' * 70))
+    print('{:20}|{:^15}|{:^15}|{:^15}'.format('Name', 'Total', '#', 'Average'))
+    print('_' * 70)
     for donor in sorted_list:
-        print('{}\t\t|\t{}\t|\t{}\t|\t{}\n'
+        print('{:20}|{:^15}|{:^15}|{:^15}'
             ''.format(donor,
                 donation_totals(DONORS, donor),
                 donation_qty(DONORS, donor),
