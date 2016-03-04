@@ -39,3 +39,9 @@ def test_donation_avg():
     avg = sum(value) // len(value)
     assert donation_avg(DONORS, donor_name) == avg
 
+
+def test_sorted_donor_list():
+    """Assert donor list is sorted by sum total donated."""
+    from mailroom import sort_donor_list
+    assert sort_donor_list(DONORS)[0] == 'Daniel'
+
