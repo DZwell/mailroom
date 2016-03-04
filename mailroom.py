@@ -64,7 +64,7 @@ def get_donor():
         display_list()
         if user_input == 'q':
             get_user_input()
-        print("\nType 'list' for the donor list, enter donor name or type 'q' to quit")
+        print("\nType 'list' for the donor list, enter donor name or type 'q' to quit.")
         user_input = input('> ').lower()
     return user_input
 
