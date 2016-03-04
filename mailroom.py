@@ -104,13 +104,15 @@ def sort_donor_list(donor_list):
 
 def create_report():
     print_report(sort_donor_list(DONORS), DONORS)
+    handle_user_input(get_user_input())
 
 
 def print_report(sorted_list, donor_list):
     """Creates well formated report of donor activity."""
-    print('Name\t\t|\tTotal\t|\t#\t|\tAverage\n' + ('_' * 70))
+    print('{:20}|{:^15}|{:^15}|{:^15}'.format('Name', 'Total', '#', 'Average'))
+    print('_' * 70)
     for donor in sorted_list:
-        print('{}\t\t|\t{}\t|\t{}\t|\t{}\n'
+        print('{:20}|{:^15}|{:^15}|{:^15}'
             ''.format(donor,
                 donation_totals(DONORS, donor),
                 donation_qty(DONORS, donor),
