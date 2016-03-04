@@ -56,18 +56,14 @@ def add_donation(donor, donation_amount, donor_dict):
     """Add donor and donation amount to donor dictionatry."""
     donor_dict.setdefault(donor, []).append(donation_amount)
 
-# TODO: Refactor this ugly ass code block
+
 def get_donor():
     """Return list of donations for given donor."""
-    print("\nType 'list' for the donor list, enter donor name or type 'q' to quit.")
+    print("\nType 'list' for the donor list or enter donor name.")
     user_input = input('> ').lower()
-    if user_input == 'q':
-        get_user_input()
     while user_input == 'list':
         display_list()
-        if user_input == 'q':
-            get_user_input()
-        print("\nType 'list' for the donor list, enter donor name or type 'q' to quit")
+        print("Type 'list' for the donor list or enter donor name.")
         user_input = input('> ').lower()
     return user_input
 
@@ -106,7 +102,8 @@ def donation_avg(donor_list, donor):
 
 def sort_donor_list(donor_list):
     """Return sorted list of donors."""
-    sorted_list = sorted(donor_list, key=lambda donor: sum(donor_list[donor]), reverse=True)
+    sorted_list = sorted(
+        donor_list, key=lambda donor: sum(donor_list[donor]), reverse=True)
     return sorted_list
 
 
