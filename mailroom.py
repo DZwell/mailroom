@@ -53,7 +53,7 @@ def add_donation(donor, donation_amount, donor_dict):
     """Add donor and donation amount to donor dictionatry."""
     donor_dict.setdefault(donor, []).append(donation_amount)
 
-
+# TODO: Refactor this ugly ass code block
 def get_donor():
     """Return list of donations for given donor."""
     print("\nType 'list' for the donor list or enter donor name.")
