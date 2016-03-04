@@ -3,9 +3,6 @@
 import sys
 DONORS = {'Ben': [0, 0]}
 
-def start():
-    """Print welcome message."""
-
 
 def get_user_input():
     """Return user input."""
@@ -97,6 +94,12 @@ def donation_qty(donor_list, donor):
 def donation_avg(donor_list, donor):
     """Return avg donation made."""
     return sum(donor_list[donor]) // len(donor_list[donor])
+
+
+def sort_donor_list(donor_list):
+    """Return sorted list of donors."""
+    sorted_list = sorted(donor_list, key=lambda donor: sum(donor_list[donor]), reverse=True)
+    return sorted_list
 
 
 
