@@ -84,6 +84,22 @@ def display_email(donor, donation_amount):
         "Thank you very much,\n Margie Plumwhistle, President S.T.E.A\n".format(donor, donation_amount))
 
 
+def donation_totals(donor_list, donor):
+    """Return sum of total donations."""
+    return sum(donor_list[donor])
+
+
+def donation_qty(donor_list, donor):
+    """Return number of donations made."""
+    return len(donor_list[donor])
+
+
+def donation_avg(donor_list, donor):
+    """Return avg donation made."""
+    return sum(donor_list[donor]) // len(donor_list[donor])
+
+
+
 if __name__ == '__main__':
     # main()
 
